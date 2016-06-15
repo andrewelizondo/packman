@@ -36,6 +36,8 @@ module PackmanCookbook
         add_shell_provisioner(provisioner)
       when 'local-shell'
         add_local_shell_provisioner(provisioner)
+      when 'chef-solo'
+        add_chef_solo_provisioner(provisioner)
       end
 
       run_state['packer_provisioners'] ||= []
@@ -70,6 +72,12 @@ module PackmanCookbook
       # Use the name attribute as the command
       provisioner['command'] = new_resource.command || new_resource.destination
       provisioner['execute_command'] = new_resource.execute_command if new_resource.execute_command
+    end
+
+    def add_chef_solo_provisioner(provisioner)
+      provisioner['cookbook_paths'] = [new_resource.cookbooks_path]
+      provisioner['run_list'] = [new_resource.run_list]
+      provisioner['json'] = new_resource.json
     end
 
     def validate_type!
