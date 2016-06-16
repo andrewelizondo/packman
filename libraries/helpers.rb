@@ -75,8 +75,8 @@ module PackmanCookbook
     end
 
     def add_chef_solo_provisioner(provisioner)
-      provisioner['cookbook_paths'] = [new_resource.cookbooks_path]
-      provisioner['run_list'] = [new_resource.run_list]
+      provisioner['cookbook_paths'] = new_resource.cookbook_paths
+      provisioner['run_list'] = new_resource.run_list
       provisioner['json'] = new_resource.json
     end
 
