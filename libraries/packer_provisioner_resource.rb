@@ -56,6 +56,11 @@ class Chef
 
       # file
       property :direction, String, default: 'upload'
+      
+      # chef-solo
+      property :json, Hash, default: {}
+      property :run_list, Array, default: []
+      property :cookbooks_path, Array, default: []
     end
   end
 end
