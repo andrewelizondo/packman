@@ -60,7 +60,7 @@ class Chef
       # chef-solo
       property :json, Hash, default: {}
       property :run_list, Array, default: []
-      property :cookbooks_path, Array, default: []
+      property :cookbook_paths, Array, default: []
     end
   end
 end
